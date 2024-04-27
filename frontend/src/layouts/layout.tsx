@@ -3,17 +3,17 @@ import Hero from "@/components/Hero";
 import Header from "@/components/Header";
 
 type Props = {
-    content: React.ReactNode;
+    children: React.ReactNode;
     showHero?: boolean; 
 };
 
-const Layout = ({ content, showHero = true }: Props) => { 
+const Layout = ({ children, showHero = true }: Props) => { 
 
     return (
         <div className="flex flex-col min-h-screen">
             <Header/>
             {showHero && <Hero/>}
-            <div className="container mx-auto flex-1 py-10">{content}</div>
+            <div className="container mx-auto flex-1 py-10">{children}</div>
             <Footer/>
         </div>
     )
