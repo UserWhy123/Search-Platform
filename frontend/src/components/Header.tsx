@@ -15,7 +15,6 @@ const  Header = () => {
             <div className="hidden md:block">
                 <MainNav/>
             </div>
-
             <div className="md:hidden">
                 <MobilNav/>
             </div>

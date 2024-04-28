@@ -20,7 +20,7 @@ const Forside = () => {
                 </h1>
                 <span className="text-xl"> bestil fra din favorit butik</span>
                 <SearchBar 
-                    placeholder="Search by city"
+                    placeholder="Søg efter by"
                     onSubmit={handleSearchSubmit} searchQuery={""}/>
             </div>
         </div>

@@ -84,9 +84,9 @@ const handleReset = () => {
                     type="button" 
                     variant="outline" 
                     className="rounded-full">
-                        Clear
+                        Slet
                 </Button>
-                <Button type="submit" className="rounded-full bg-orange-500">Search</Button>
+                <Button type="submit" className="rounded-full bg-orange-500">Søge</Button>
 
             </form>
         </Form>
