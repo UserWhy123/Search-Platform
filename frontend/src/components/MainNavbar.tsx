@@ -20,7 +20,7 @@ const MainNav =() => {
                 <Button 
                     variant="ghost" 
                     className="font-bold hover:text-orange-500 hover-bg-white" 
-                    // Funktionen der kaldes ved klik. Denne funktion initierer login-processen.
+                    // Funktionen der kaldes ved klik. Denne funktion starter login process.
                     onClick={async () => await loginWithRedirect()}> 
                     Login
                 </Button>

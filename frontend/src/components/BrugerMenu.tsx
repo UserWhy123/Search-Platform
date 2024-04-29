@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 
 
-const UsernameMenu = () => {
+const BrugerNavnMenu = () => {
 
    
-
-
     return(
 
             <DropdownMenu>
@@ -41,4 +39,4 @@ const UsernameMenu = () => {
     )
 }
 
-export default UsernameMenu
+export default BrugerNavnMenu

@@ -9,51 +9,56 @@ import { useEffect } from "react";
 
 
 
-// Import af Zod biblioteket og definerering af skema for formularobjektet. validerering,
-// at searchQuery er en streng og kræver fejlmeddelelse, hvis feltet er tomt.
+// Definerering af skema for formularobjektet. validerering,
+// at searchQuery er en string og kræver fejlmeddelelse, hvis feltet er tomt.
 const formSchema = z.object({
     searchQuery: z.string({
         required_error: "Butik navn skal skrives",
     }),
 });
 
-// Eksport af en type `SearchForm`, der automatisk genereres baseret på formSchema.
+// Eksport af typen SearchForm, der automatisk genereres baseret på formSchema.
 export type SearchForm = z.infer<typeof formSchema>;
 
-// Definition af 'Props' type, som indeholder egenskaberne for 'SearchBar' komponenten.
+// Definition af Props type, som indeholder egenskaberne for SearchBar komponenten.
 type Props = {
-    onSubmit: (FormData: SearchForm)=> void; // Funktion, der kaldes, når formularen indsendes korrekt.
-    placeholder: string; // Placeholder tekst for input feltet.
-    onReset?: () => void; // Valgfri funktion der kaldes, når formularen nulstilles.
-    searchQuery: string; // Startværdien for søgefeltet.
+    // Funktion kaldes, når formularen indsendes korrekt.
+    onSubmit: (FormData: SearchForm)=> void; 
+    placeholder: string; 
+    // Valgfri funktion der kaldes, når formularen nulstilles.
+    onReset?: () => void; 
+    searchQuery: string; 
 };
 
-// Definition af 'SearchBar' komponenten, der tager 'Props' som input.
+// Definition af SearchBar komponenten, der tager Props som input.
 const SearchBar = ({onSubmit, onReset, placeholder, searchQuery}: Props) =>{
-    // Opretter en formular instans ved brug af 'useForm' hook, der integrerer Zod validering via 'zodResolver' og angiver standardværdier.
-
+    
+// Opretter en formular instans ved brug af useForm hook, 
+//der integrerer Zod validering via zodResolver og angiver standardværdier.
     const form = useForm<SearchForm>({
-           // Fortsætter opsætning af 'useForm' hvor 'resolver' angiver metoden til validering af formulardata, her baseret på 'formSchema' gennem 'zodResolver'.
+           // Fortsætter opsætning af useForm hvor resolver angiver metoden til validering af formulardata, 
+           // baseret på formSchema gennem 'zodResolver'.
     resolver: zodResolver(formSchema),
 
-    // Angiver standardværdierne for formularen, hvor 'searchQuery' sættes til værdien fra props.
+    // Angiver standardværdierne for formularen, hvor searchQuery sættes til værdien fra props.
     defaultValues: { 
         searchQuery,
     }
 });
 
-// Bruger 'useEffect' hook til automatisk at nulstille formularen, når 'searchQuery' ændres. Dette sikrer, at formularen altid reflekterer den nuværende søgeforespørgsel.
+// useEffect hook til automatisk at nulstille formularen, når searchQuery ændres. Dette sikrer, 
+//at formularen altid viser den nuværende søgening.
 useEffect(() =>{
-    form.reset({ searchQuery })  // Nulstiller formularen med den aktuelle værdi af 'searchQuery'.
-}, [form, searchQuery]);  // Afhængigheder for 'useEffect', hvilket betyder at effekten kører, når enten 'form' eller 'searchQuery' ændres.
+    form.reset({ searchQuery })  
+}, [form, searchQuery]);  // Afhængigheder for useEffect, hvilket betyder at effekten kører, når enten form eller searchQuery ændres.
 
-// Definition af 'handleReset' funktionen, som nulstiller formularen og udfører en yderligere handling, hvis den er defineret.
+// handleReset nulstiller formularen.
 const handleReset = () => {
     form.reset({
-        searchQuery: "",  // Nulstiller 'searchQuery' til en tom streng.
+        searchQuery: "", 
     });
 
-    // Tjekker om 'onReset' prop er givet og udfører funktionen, hvis den er til stede.
+    // Hvis onReset prop er givet, og udfører funktionen, hvis den er til stede.
     if(onReset){
         onReset();
     };

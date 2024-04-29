@@ -10,8 +10,8 @@ const Footer = () => {
                     bestil madvare
                 </span>
                 <span className="text-white font-bold tracking-tight flex gap-4">
-                    <span>Privacy policy</span>
-                    <span>Terms of services</span>
+                    <span>Politiker</span>
+                    <span>Kontakt os </span>
                 </span>
             </div>
         </div>
